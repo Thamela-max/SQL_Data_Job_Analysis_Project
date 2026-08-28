@@ -58,6 +58,71 @@ LIMIT 10;
 ![Top Paying Jobs](images/top_paying_jobs.png)
 
 
+### 2. What skills are required for these top-paying roles?
+By leveraging a Common Table Expression (CTE) to isolate the top 10 highest-paying remote data analyst jobs, this query joins those listings against the skills dimensions. This reveals the specific technical competencies and tools required to command top-tier salaries in the remote job market.
+
+```sql
+WITH top_paying_jobs AS (
+    SELECT 
+        job_id,
+        job_title,
+        salary_year_avg,
+        name AS company_name
+    FROM
+        job_postings_fact
+    LEFT JOIN company_dim ON job_postings_fact.company_id = company_dim.company_id
+    WHERE
+        job_title_short = 'Data Analyst' AND
+        job_location = 'Anywhere' AND
+        salary_year_avg IS NOT NULL
+    ORDER BY
+        salary_year_avg DESC
+    LIMIT 10
+)
+
+SELECT top_paying_jobs.*, 
+       skills
+FROM top_paying_jobs
+INNER JOIN skills_job_dim on top_paying_jobs.job_id = skills_job_dim.job_id
+INNER JOIN skills_dim on skills_job_dim.skill_id = skills_dim.skill_id
+ORDER BY
+    salary_year_avg DESC;
+```
+
+![Skills for Top Paying Jobs](images/top_paying_skills_required.png)
+
+
+### 3. What are the most in-demand skills for a data analyst?
+To understand what skills keep an analyst highly marketable, I aggregated the total volume of job postings demanding specific tools. This query focuses strictly on data analyst roles with remote options ('job_work_from_home = TRUE') to reveal the top 5 most frequently requested competencies.
+
+```sql
+SELECT 
+    skills,
+    COUNT(skills_job_dim.job_id) AS demand_count 
+FROM job_postings_fact
+INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
+INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+WHERE
+    job_title_short = 'Data Analyst' AND
+    job_work_from_home = TRUE
+GROUP BY 
+    skills
+ORDER BY 
+    demand_count DESC
+LIMIT 5;
+```
+
+| Skills | Demand Count |
+| :--- | :--- |
+| SQL | 7,291 |
+| Excel | 4,611 |
+| Python | 4,330 |
+| Tableau | 3,745 |
+| Power BI | 2,609 |
+
+
+
+
 # What I Learned
 
 # Conclusion

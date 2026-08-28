@@ -89,7 +89,7 @@ ORDER BY
     salary_year_avg DESC;
 ```
 
-![Skills for Top Paying Jobs](images/top_paying_skills_required.png)
+![Skills for Top Paying Jobs](images/Top_Paying_Skills.png)
 
 
 ### 3. What are the most in-demand skills for a data analyst?
@@ -142,7 +142,7 @@ ORDER BY
 LIMIT 10;
 ```
 
-![Top Paying Skills](images/top_paying_skills.png)
+![Top Paying Skills](images/Top_Paying_Skills.png)
 
 
 ### 5. What are the most optimal skills to learn?
@@ -171,7 +171,7 @@ ORDER BY
 LIMIT 10;
 ```
 
-![Most Optimal Skills](images/most_optimal_skills.png)
+![Most Optimal Skills](images/Optimal_Skills.png)
 
 
 

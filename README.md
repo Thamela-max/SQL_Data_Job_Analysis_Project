@@ -55,7 +55,7 @@ ORDER BY
 LIMIT 10;
 ```
 
-![Top Paying Jobs](images/Top_Paying_Jobs.png)
+![Top Paying Jobs](images/Top_Paying_Data_Analyst_Jobs.png)
 
 
 ### 2. What skills are required for these top-paying roles?
@@ -89,7 +89,18 @@ ORDER BY
     salary_year_avg DESC;
 ```
 
-![Skills for Top Paying Jobs](images/Top_Paying_Skills.png)
+### Top Required Skills in Highest-Paying Data Analyst Jobs (Ranked by Demand):
+
+* **SQL**
+* **Python**
+* **Tableau**
+* **R**
+* **Snowflake**
+* **Excel**
+* **Pandas**
+* **Azure**
+* **AWS**
+* **Oracle**
 
 
 ### 3. What are the most in-demand skills for a data analyst?

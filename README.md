@@ -55,7 +55,7 @@ ORDER BY
 LIMIT 10;
 ```
 
-![Top Paying Jobs](images/top_paying_jobs.png)
+![Top Paying Jobs](images/Top_Paying_Jobs.png)
 
 
 ### 2. What skills are required for these top-paying roles?

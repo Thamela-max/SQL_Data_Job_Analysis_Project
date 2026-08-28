@@ -14,11 +14,20 @@ This project explores the data analyst job market to uncover the most lucrative 
 The goal is to provide data-driven insights for aspiring analysts, career changers, and remote job seekers looking to maximize their value in the current tech economy.
 
 
-
-
 # Background
 
+The tech landscape is shifting rapidly, with remote and hybrid roles becoming highly sought after by data professionals. To navigate this evolving market, I wanted to dive into a massive dataset of job postings rather than relying on guesswork or hype. 
+
+This project was born out of a need to use actual data to find out which skills truly give data analysts the highest return on investment (ROI) for their time, training, and career development.
+
 # Tools I Used
+
+To handle this large-scale dataset and extract meaningful insights, I used the following tools:
+
+* **SQL:** The backbone of the project, used for querying the database, filtering roles, and aggregating salary and skill data.
+* **PostgreSQL:** The database management system chosen to host and manage the massive job dataset.
+* **Visual Studio Code:** My primary environment for writing clean SQL queries and managing project files.
+* **Git & GitHub:** Used for version control and sharing this analysis with the data community.
 
 # The Analysis
 

@@ -55,7 +55,7 @@ ORDER BY
 LIMIT 10;
 ```
 
-![Top Paying Jobs](images/Top_Paying_Data_Analyst_Jobs.png)
+![Top Paying Jobs](images/Top_Paying_Data
 
 
 ### 2. What skills are required for these top-paying roles?

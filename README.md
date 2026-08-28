@@ -121,6 +121,59 @@ LIMIT 5;
 | Power BI | 2,609 |
 
 
+### 4. What are the top paying skills based on salary?
+Different skills command different premiums. This query looks at the average salaries associated with specific tools and languages, revealing the top 10 specialized skills that offer the highest financial reward for remote Data Analysts.
+
+```sql
+SELECT
+    skills,
+    ROUND(AVG(salary_year_avg), 0) AS avg_salary
+FROM job_postings_fact
+INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
+INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+WHERE 
+    job_title_short = 'Data Analyst' AND 
+    salary_year_avg IS NOT NULL
+    AND job_work_from_home = TRUE
+GROUP BY 
+    skills
+ORDER BY 
+    avg_salary DESC
+LIMIT 10;
+```
+
+![Top Paying Skills](images/top_paying_skills.png)
+
+
+### 5. What are the most optimal skills to learn?
+To identify the ultimate "sweet spot," this query combines demand volume and average salary data. By applying a `HAVING` filter to ensure the tools appear in more than 10 postings, this analysis eliminates low-volume anomalies and isolates the top 10 most optimal, high-value skills to master for a strong return on investment (ROI).
+
+```sql
+SELECT
+    skills_dim.skill_id,
+    skills_dim.skills,
+    COUNT(skills_job_dim.job_id) AS demand_count,
+    ROUND(AVG(job_postings_fact.salary_year_avg), 0) AS avg_salary
+FROM job_postings_fact
+INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
+INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+WHERE 
+    job_title_short = 'Data Analyst' 
+    AND salary_year_avg IS NOT NULL 
+    AND job_work_from_home = TRUE
+GROUP BY 
+    skills_dim.skill_id
+HAVING    
+    COUNT(skills_job_dim.job_id) > 10
+ORDER BY 
+    avg_salary DESC,
+    demand_count DESC
+LIMIT 10;
+```
+
+![Most Optimal Skills](images/most_optimal_skills.png)
+
+
 
 
 # What I Learned
